@@ -35,7 +35,14 @@ app.get("/contact", function(req, res){
   });
 });
 
+app.get("/compose", function(req, res){
+  res.render("compose.ejs");
+});
 
+app.post("/compose", function(req, res) {
+    console.log(req.body.newPost);
+    res.redirect("/compose");
+});
 
 
 app.listen(3000, function() {

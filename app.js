@@ -40,19 +40,6 @@ const postSchema = {
 //Mongoose model is usually Capitalized
 const Post = mongoose.model("Post", postSchema);
 
-// //Create standard Posts
-// const post1 = new Post({
-//   item: "Welcome to your todolist!"
-// });
-// const post2 = new Post({
-//   item: "Hit the + button to add new item."
-// });
-// const post = new Post({
-//   item: "<-- Hit this to delete and item"
-// });
-
-
-
 app.get("/", function(req, res){
   Post.find({}, function(err, posts){
     res.render("home.ejs", {
@@ -60,7 +47,6 @@ app.get("/", function(req, res){
       posts: posts
     });
   });
-  // console.log(posts);
 });
 
 
@@ -74,16 +60,6 @@ app.get('/posts/:postId', function (req, res) {
         content: _.lowerCase(_.toLower(post.content))
       });
   });
-  // posts.forEach(function(post){
-  //   const postTitle = _.lowerCase(_.toLower(post.title));
-  //   console.log(postTitle);
-  //   const postId = _.lowerCase(_.toLower(req.params.postId));
-  //   if (postTitle === postId){
-  //     res.render("post.ejs", {
-  //       sendPost: post
-  //     });
-  //   }
-  // });
 });
 
 app.get("/about", function(req, res){
@@ -112,8 +88,6 @@ app.post("/compose", function(req, res) {
         res.redirect("/");
       }
     });
-    // res.redirect("/compose");
-    // posts.push(userPost);
 });
 
 
